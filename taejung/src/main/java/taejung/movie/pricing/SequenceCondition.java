@@ -1,0 +1,16 @@
+package taejung.movie.pricing;
+
+import taejung.movie.DiscountCondition;
+import taejung.movie.Screening;
+
+public class SequenceCondition implements DiscountCondition {
+    private int sequence;
+
+    public SequenceCondition(int sequence) {
+        this.sequence = sequence;
+    }
+
+    public boolean isSatisfiedBy(Screening screening) {
+        return screening.isSequence(sequence);
+    }
+}
