@@ -12,25 +12,27 @@ public class Reservation {
     private Customer customer;
     private Screening screening;
     private Money fee;
-    private List<Audience> audienceTypes;
+    private List<Audience> audiences;
     private LocalDateTime whenReserved;
 
-    public Reservation(UUID uuid, Customer customer, Screening Screening, Money fee, List<Audience> audienceTypes, LocalDateTime whenReserved) {
+    public Reservation(UUID uuid, Customer customer, Screening Screening, Money fee, List<Audience> audiences, LocalDateTime whenReserved) {
         this.uuid = uuid;
         this.customer = customer;
         this.screening = Screening;
         this.fee = fee;
-        this.audienceTypes = audienceTypes;
+        this.audiences = audiences;
         this.whenReserved = whenReserved;
     }
 
     public String getAudienceInformation() {
         StringBuilder audienceInformation = new StringBuilder();
-        for (Audience audienceType : audienceTypes) {
-            audienceInformation.append(audienceType.getAudienceType());
-            audienceInformation.append(" ");
-            audienceInformation.append(audienceType.getAudienceCount());
-            audienceInformation.append("명 ");
+        for (int i =0; i<audiences.size(); i++)
+        {
+            Audience audience = audiences.get(i);
+            audienceInformation.append(audience.getAudienceInformation());
+            if(i != audiences.size()-1) {
+                audienceInformation.append(",");
+            }
         }
         return audienceInformation.toString();
     }
@@ -52,7 +54,7 @@ public class Reservation {
 
     public Money refund(){
         Money amount = Money.ZERO;
-        for(Audience audience: audienceTypes) {
+        for(Audience audience: audiences) {
             amount = amount.plus(screening.calculateRefundAmount(audience));
         }
         return amount;

@@ -60,11 +60,11 @@ public class Screening {
     }
 
     private Money calculateFee(Audience audience) {
-        return movie.calculateMovieFee(this).times(audience.getAudienceCount());
+        return audience.calculateTotalAmount(movie.calculateMovieFee(this));
     }
 
     public Money calculateRefundAmount(Audience audience) {
-        return movie.calculateRefundAmount(this).times(audience.getAudienceCount());
+        return audience.calculateTotalAmount(movie.calculateRefundAmount(this));
     }
 
 }

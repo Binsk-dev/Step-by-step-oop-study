@@ -13,11 +13,11 @@ public class Audience {
         this.audienceCount = audienceCount;
     }
 
-    public AudienceType getAudienceType() {
-        return audienceType;
+    public Money calculateTotalAmount(Money money) {
+        return money.times(audienceCount);
     }
 
-    public int getAudienceCount() {
-        return audienceCount;
+    public String getAudienceInformation() {
+        return audienceType + " " + audienceCount + "명";
     }
 }
