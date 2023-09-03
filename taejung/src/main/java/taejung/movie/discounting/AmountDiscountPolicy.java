@@ -1,4 +1,4 @@
-package taejung.movie.pricing;
+package taejung.movie.discounting;
 
 import taejung.money.Money;
 import taejung.movie.DefaultDiscountPolicy;
@@ -14,7 +14,7 @@ public class AmountDiscountPolicy extends DefaultDiscountPolicy {
     }
 
     @Override
-    protected Money getDiscountAmount(Screening screening) {
+    protected Money getDiscountAmount(Money defaultMoney, Screening screening) {
         return discountAmount;
     }
 }

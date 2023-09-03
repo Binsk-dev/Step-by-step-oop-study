@@ -12,7 +12,7 @@ public class PercentRefundPolicy extends DefaultRefundPolicy {
     }
 
     @Override
-    protected Money getRefundAmount(Screening screening) {
-        return screening.getMovieFee().times(percent);
+    protected Money getRefundAmount(Money defaultFee, Screening screening) {
+        return screening.calculateMovieFee(defaultFee).times(percent);
     }
 }

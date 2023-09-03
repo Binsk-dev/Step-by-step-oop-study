@@ -1,13 +1,13 @@
 package taejung.movie;
 
-public enum AudienceType {
+public enum AudienceAgeType {
     ADULT("성인"),
-    TEENS("청소년"),
-    CHILDREN("어린이");
+    TEEN("청소년"),
+    CHILD("어린이");
 
     final String name;
 
-    AudienceType(String name) {
+    AudienceAgeType(String name) {
         this.name = name;
     }
 

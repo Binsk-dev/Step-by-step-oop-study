@@ -3,17 +3,18 @@ package taejung.movie;
 public class Theater {
 
     private String name;
-    private String cinamaName;
+    private String cinemaName;
 
-    public Theater(String cinema) {
-        this.cinamaName = cinema;
+    public Theater(String name, String cinema) {
+        this.name = name;
+        this.cinemaName = cinema;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getCinamaName(){
-        return cinamaName;
+    public String getCinemaName(){
+        return cinemaName;
     }
 }

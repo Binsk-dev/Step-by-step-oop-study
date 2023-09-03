@@ -4,13 +4,16 @@ import taejung.money.Money;
 
 
 public class Audience {
-
-    private AudienceType audienceType;
+    private AudienceAgeType audienceAgeType;
     private int audienceCount;
 
-    public Audience(AudienceType audienceType, Money fee, int audienceCount) {
-        this.audienceType = audienceType;
+    public Audience(AudienceAgeType audienceAgeType, int audienceCount) {
+        this.audienceAgeType = audienceAgeType;
         this.audienceCount = audienceCount;
+    }
+
+    public AudienceAgeType getAudienceAgeType() {
+        return audienceAgeType;
     }
 
     public Money calculateTotalAmount(Money money) {
@@ -18,6 +21,6 @@ public class Audience {
     }
 
     public String getAudienceInformation() {
-        return audienceType + " " + audienceCount + "명";
+        return audienceAgeType + " " + audienceCount + "명";
     }
 }

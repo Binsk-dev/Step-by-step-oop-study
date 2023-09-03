@@ -1,4 +1,4 @@
-package taejung.movie.pricing;
+package taejung.movie.discounting;
 
 import taejung.movie.DiscountCondition;
 import taejung.movie.Screening;

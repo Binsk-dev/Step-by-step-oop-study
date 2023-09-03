@@ -11,6 +11,7 @@ public class Reservation {
     private UUID uuid;
     private Customer customer;
     private Screening screening;
+
     private Money fee;
     private List<Audience> audiences;
     private LocalDateTime whenReserved;
@@ -22,6 +23,10 @@ public class Reservation {
         this.fee = fee;
         this.audiences = audiences;
         this.whenReserved = whenReserved;
+    }
+
+    public Money getFee() {
+        return fee;
     }
 
     public String getAudienceInformation() {

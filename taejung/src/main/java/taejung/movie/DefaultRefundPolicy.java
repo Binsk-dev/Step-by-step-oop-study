@@ -7,22 +7,22 @@ import java.util.Arrays;
 import java.util.List;
 
 public abstract class DefaultRefundPolicy implements RefundPolicy {
-    private List<RefundCondition> conditions = new ArrayList<>();
+    private List<RefundCondition> conditions;
 
     public DefaultRefundPolicy(RefundCondition... conditions) {
         this.conditions = Arrays.asList(conditions);
     }
 
     @Override
-    public Money calculateRefundAmount(Screening screening) {
+    public Money calculateRefundAmount(Money defaultFee, Screening screening) {
         for(RefundCondition each : conditions) {
             if (each.isRefundable(screening)) {
-                return getRefundAmount(screening);
+                return getRefundAmount(defaultFee, screening);
             }
         }
 
         return Money.ZERO;
     }
 
-    abstract protected Money getRefundAmount(Screening Screening);
+    abstract protected Money getRefundAmount(Money defaultFee, Screening Screening);
 }
