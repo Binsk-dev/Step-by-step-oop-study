@@ -52,7 +52,7 @@ public class Player {
     public HitPoint getTotalUnitHP() {
         HitPoint hitPoint = HitPoint.ZERO;
         for (Unit unit : unitList) {
-            hitPoint = hitPoint.plus(unit.hp);
+            hitPoint = hitPoint.plus(unit.getHP());
         }
         System.out.println(name + " 포켓몬들의 총 HP:" + hitPoint);
         return hitPoint;

@@ -2,7 +2,6 @@ package pocketmon;
 
 import pocketmon.damage.Armour;
 import pocketmon.damage.Attack;
-import pocketmon.damage.AttackType;
 import pocketmon.hitPoint.HitPoint;
 
 import java.util.HashMap;
@@ -10,10 +9,10 @@ import java.util.List;
 import java.util.Map;
 
 public class Unit implements Attacker, Defencer {
-    HitPoint hp;
-    String name;
-    Map<AttackType, Attack> attackTypeAttackMap;
-    Map<AttackType, Armour> attackTypeArmourMap;
+    private HitPoint hp;
+    private final String name;
+    private final Map<AttackType, Attack> attackTypeAttackMap;
+    private final Map<AttackType, Armour> attackTypeArmourMap;
 
     public Unit(HitPoint hp, String name, List<Attack> attackList, List<Armour> armourList) {
         this.hp = hp;
@@ -28,6 +27,10 @@ public class Unit implements Attacker, Defencer {
         for (Armour armour : armourList) {
             attackTypeArmourMap.compute(armour.getAttackType(), (k, v) -> (v != null) ? v.plus(armour) : armour);
         }
+    }
+
+    public HitPoint getHP() {
+        return hp;
     }
 
     public String getName() {

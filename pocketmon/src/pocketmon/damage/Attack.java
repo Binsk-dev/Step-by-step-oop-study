@@ -1,5 +1,6 @@
 package pocketmon.damage;
 
+import pocketmon.AttackType;
 import pocketmon.hitPoint.HitPoint;
 
 import java.math.BigDecimal;

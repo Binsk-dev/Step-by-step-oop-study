@@ -1,4 +1,4 @@
-package pocketmon.damage;
+package pocketmon;
 
 public enum AttackType {
     ICE,

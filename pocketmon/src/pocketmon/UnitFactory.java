@@ -2,7 +2,6 @@ package pocketmon;
 
 import pocketmon.damage.Armour;
 import pocketmon.damage.Attack;
-import pocketmon.damage.AttackType;
 import pocketmon.hitPoint.HitPoint;
 
 import java.util.*;
