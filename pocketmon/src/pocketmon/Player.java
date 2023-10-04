@@ -1,6 +1,7 @@
 package pocketmon;
 
 import org.jetbrains.annotations.Nullable;
+import pocketmon.hitPoint.HitPoint;
 
 import java.util.List;
 import java.util.Objects;
@@ -29,12 +30,32 @@ public class Player {
         System.out.println(getName() + "이(가) " + opponent.getName() + "을(를) 공격!");
         Unit currentUnit = getCurrentUnit();
         if (currentUnit != null) {
-            currentUnit.attack(opponent.getCurrentUnit());
+            currentUnit.attack(Objects.requireNonNull(opponent.getCurrentUnit()));
         }
     }
 
     public int getRemainUnitCount() {
         return Math.max(unitList.size() - this.currentUnitIndex, 0);
+    }
+
+    public int getAliveUnitCount() {
+        int count = 0;
+        for (Unit unit : unitList) {
+            if(unit.isAlive()) {
+                count += 1;
+            }
+        }
+        System.out.println(name + " 전투가능한 포켓몬 수:" + count);
+        return count;
+    }
+
+    public HitPoint getTotalUnitHP() {
+        HitPoint hitPoint = HitPoint.ZERO;
+        for (Unit unit : unitList) {
+            hitPoint = hitPoint.plus(unit.hp);
+        }
+        System.out.println(name + " 포켓몬들의 총 HP:" + hitPoint);
+        return hitPoint;
     }
 
     /**
@@ -74,7 +95,7 @@ public class Player {
     }
 
     public void showCurrentUnitStatus() {
-        System.out.println("===== " + getName() + " 의 포켓몬 상태 " + "=====");
+        System.out.println("===== " + getName() + " 의 포켓몬 상태 " + currentUnitIndex + "=====");
         Objects.requireNonNull(getCurrentUnit()).showStatus();
     }
 }

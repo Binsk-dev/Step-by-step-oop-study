@@ -5,14 +5,14 @@ import pocketmon.turn.AttackTurnAbstractFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game {
-    private final Player player1;
-    private final Player player2;
+public abstract class Game {
+    protected final Player player1;
+    protected final Player player2;
     private final List<Turn> turnList;
     private final AttackTurnAbstractFactory attackTurnFactory;
 
 
-    Game(Player player1, Player player2, AttackTurnAbstractFactory attackTurnFactory) {
+    protected Game(Player player1, Player player2, AttackTurnAbstractFactory attackTurnFactory) {
         this.player1 = player1;
         this.player2 = player2;
         this.turnList = new ArrayList<>();
@@ -41,9 +41,11 @@ public class Game {
             turn.runTurn();
             turnList.add(turn);
         }
+        System.out.println();
         try {
-            if (getWinner() != null) {
-                System.out.println("\n대결의 승자는!! " + getWinner().getName());
+            Player winner = getWinner();
+            if (winner!= null) {
+                System.out.println("\n대결의 승자는!! " + winner.getName());
             } else {
                 System.out.println("\n대결은 무승부로 끝났습니다!!");
             }
@@ -57,16 +59,5 @@ public class Game {
         return this.player1.getRemainUnitCount() > 0 && this.player2.getRemainUnitCount() > 0;
     }
 
-    private Player getWinner() throws Exception {
-        if (isNotEnd()) {
-            throw new Exception();
-        }
-        if (player1.getRemainUnitCount() > 0) {
-            return player1;
-        } else if (player2.getRemainUnitCount() > 0) {
-            return player2;
-        }
-        return null;
-    }
-
+    protected abstract Player getWinner() throws Exception;
 }

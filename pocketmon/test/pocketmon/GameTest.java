@@ -1,6 +1,7 @@
 package pocketmon;
 
-import pocketmon.turn.factory.AttackNoChangeUntilDieTurnFactory;
+import pocketmon.game.GameAliveUnitCount;
+import pocketmon.turn.factory.AttackChangeAllUnitWhenAnyUnitDieFactory;
 
 public class GameTest {
     public static void main(String[] args) {
@@ -8,11 +9,19 @@ public class GameTest {
         Player player1 = new Player("지우", unitFactory.createRandomUnitList("지우", 5, 6));
         Player player2 = new Player("로이", unitFactory.createRandomUnitList("로이", 5, 6));
 
-        Game game = new Game(
+        Game game = new GameAliveUnitCount(
                 player1,
                 player2,
-                new AttackNoChangeUntilDieTurnFactory()
+                new AttackChangeAllUnitWhenAnyUnitDieFactory()
+                // new AttackNoChangeUntilDieTurnFactory()
         );
+
+//        Game game = new GameTotalHP(
+//                player1,
+//                player2,
+//                new AttackChangeAllUnitWhenAnyUnitDieFactory()
+//                // new AttackNoChangeUntilDieTurnFactory()
+//        );
         game.start();
     }
 }

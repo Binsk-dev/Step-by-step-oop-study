@@ -44,7 +44,7 @@ public class UnitFactory {
 
     public List<Unit> createRandomUnitList(String namePrefix, int min, int max) {
         List<Unit> unitList = new ArrayList<>();
-        for (int i = 0; i < random.nextInt(min, max); i++) {
+        for (int i = 1; i <= random.nextInt(min, max); i++) {
             unitList.add(createRandomUnit(namePrefix + i));
         }
         return unitList;
